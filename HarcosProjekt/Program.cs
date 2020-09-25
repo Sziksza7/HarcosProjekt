@@ -17,6 +17,10 @@ namespace HarcosProjekt
                 Harcos j = new Harcos(splitsor[0], int.Parse(splitsor[1]));
                 lista.Add(j);
             }
+            for (int i = 0; i < lista.Count; i++)
+            {
+                Console.WriteLine( lista[i]);
+            }
         }
     }
 }
