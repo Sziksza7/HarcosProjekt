@@ -34,37 +34,46 @@ namespace HarcosProjekt
         public int SzintLepeshez{ get => 10+szint*5; }
         public int MaxEletero{ get => alapEletero+(szint*3);  }
 
-        public static void Megkuzd(Harcos egy,Harcos ketto) 
+        public void megKuzd(Harcos Kihivott)
         {
-            if (egy == ketto) { Console.WriteLine("Hiba, kétszer adta meg ugyanazt a harcost");}
-            else if (egy.Eletero==0 && ketto.Eletero==0)
+            if (this == Kihivott)
             {
-                Console.WriteLine("Az egyeik harcos halott");
+                Console.WriteLine("A két harcos neve megyezik!");
             }
-            else
+            else if (this.eletero == 0 || Kihivott.eletero == 0)
             {
-                do
+                Console.WriteLine("A harcos életereje 0!");
+            }
+            bool kihivoTamad = true;
+            while (this.eletero != 0 && Kihivott.eletero != 0)
+            {
+                if (kihivoTamad)
                 {
-                    ketto.Eletero = ketto.Eletero - egy.Sebzes;
-                    if (ketto.Eletero != 0)
-                    {
-                        egy.Eletero = egy.Eletero - ketto.Sebzes;
-                        ketto.Tapasztalat = ketto.Tapasztalat + 5;
-                    }
-                    else if(ketto.Eletero ==0 ) 
-                    {
-                        egy.tapasztalat = egy.Tapasztalat + 15;
-                    }
-                    if (egy.Eletero != 0)
-                    {
-                        egy.Tapasztalat = egy.Tapasztalat + 5;
-                    }
-                    else if (egy.Eletero == 0)
-                    {
-                        ketto.tapasztalat = ketto.Tapasztalat + 15;
-                    }
-                } while (egy.Eletero != 0 && ketto.Eletero != 0);       
+                    Kihivott.eletero = Kihivott.eletero - this.Sebzes;
+                }
+                else
+                {
+                    this.eletero = this.eletero - Kihivott.Sebzes;
+                }
+                kihivoTamad = !kihivoTamad;
+                if (this.eletero != 0)
+                {
+                    this.tapasztalat = this.Tapasztalat + 5;
+                }
+                if (Kihivott.eletero != 0)
+                {
+                    Kihivott.tapasztalat = Kihivott.Tapasztalat + 5;
+                }
+                if (this.eletero == 0)
+                {
+                    Kihivott.tapasztalat = Kihivott.Tapasztalat + 10;
+                }
+                if (Kihivott.eletero != 0)
+                {
+                    this.tapasztalat = this.Tapasztalat + 10;
+                }
             }
+
         }
 
         public void Gyogyul() 

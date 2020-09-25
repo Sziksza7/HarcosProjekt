@@ -34,26 +34,23 @@ namespace HarcosProjekt
             Console.WriteLine("Az ön harcosainak adatai: " + felhasznalo);
             for (int i = 0; i < lista.Count; i++)
             {
-                Console.WriteLine(lista[i]);
+                Console.WriteLine((i+1)+"."+lista[i]);
             }
             Console.WriteLine("Mit szeretne tenni?");
             Console.WriteLine("a.) Megküzdeni egy harcossal");
             Console.WriteLine("b.) Gyógyulni");
             Console.WriteLine("c.) Kilépni");
             string dontes = Console.ReadLine();
+            while (!dontes.Equals("c"))
             if (dontes.Equals("a"))
             {
                 Console.WriteLine("Kivel szeretne harcolni?");
                 int valasztott = int.Parse(Console.ReadLine());
-                Harcos.Megkuzd(felhasznalo, lista[valasztott - 1]);
+                felhasznalo.megKuzd(lista[valasztott-1]);
             }
             else if (dontes.Equals("b"))
             {
                 felhasznalo.Gyogyul();
-            }
-            else if (dontes.Equals("c"))
-            {
-                Console.WriteLine("A program ki fog lépni");
             }
         }
 
