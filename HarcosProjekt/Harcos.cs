@@ -36,7 +36,8 @@ namespace HarcosProjekt
 
         public void megKuzd(Harcos Kihivott)
         {
-            if (this == Kihivott)
+            bool kihivoTamad = true;
+            if (this.nev == Kihivott.nev)
             {
                 Console.WriteLine("A két harcos neve megyezik!");
             }
@@ -44,33 +45,35 @@ namespace HarcosProjekt
             {
                 Console.WriteLine("A harcos életereje 0!");
             }
-            bool kihivoTamad = true;
-            while (this.eletero != 0 && Kihivott.eletero != 0)
-            {
-                if (kihivoTamad)
+            
+            else {
+                while (this.eletero > 0 && Kihivott.eletero > 0)
                 {
-                    Kihivott.eletero = Kihivott.eletero - this.Sebzes;
-                }
-                else
-                {
-                    this.eletero = this.eletero - Kihivott.Sebzes;
-                }
-                kihivoTamad = !kihivoTamad;
-                if (this.eletero != 0)
-                {
-                    this.tapasztalat = this.Tapasztalat + 5;
-                }
-                if (Kihivott.eletero != 0)
-                {
-                    Kihivott.tapasztalat = Kihivott.Tapasztalat + 5;
-                }
-                if (this.eletero == 0)
-                {
-                    Kihivott.tapasztalat = Kihivott.Tapasztalat + 10;
-                }
-                if (Kihivott.eletero != 0)
-                {
-                    this.tapasztalat = this.Tapasztalat + 10;
+                    if (kihivoTamad)
+                    {
+                        Kihivott.eletero = Kihivott.eletero - this.Sebzes;
+                    }
+                    else
+                    {
+                        this.eletero = this.eletero - Kihivott.Sebzes;
+                    }
+                    kihivoTamad = !kihivoTamad;
+                    if (this.eletero != 0)
+                    {
+                        this.tapasztalat = this.Tapasztalat + 5;
+                    }
+                    if (Kihivott.eletero != 0)
+                    {
+                        Kihivott.tapasztalat = Kihivott.Tapasztalat + 5;
+                    }
+                    if (this.eletero == 0)
+                    {
+                        Kihivott.tapasztalat = Kihivott.Tapasztalat + 10;
+                    }
+                    if (Kihivott.eletero != 0)
+                    {
+                        this.tapasztalat = this.Tapasztalat + 10;
+                    }
                 }
             }
 
@@ -78,13 +81,17 @@ namespace HarcosProjekt
 
         public void Gyogyul() 
         {
-            if (this.Eletero == 0)
+            if (this.Eletero <= 0)
             {
                 this.Eletero = MaxEletero;
             }
-            else
+            else if (this.Eletero< this.MaxEletero)
             {
                 this.Eletero = this.Eletero+(3+szint);
+            }
+            else if (this.eletero>this.MaxEletero)
+            {
+                this.eletero = this.MaxEletero;
             }
            
 

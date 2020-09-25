@@ -42,15 +42,26 @@ namespace HarcosProjekt
             Console.WriteLine("c.) Kilépni");
             string dontes = Console.ReadLine();
             while (!dontes.Equals("c"))
-            if (dontes.Equals("a"))
             {
-                Console.WriteLine("Kivel szeretne harcolni?");
-                int valasztott = int.Parse(Console.ReadLine());
-                felhasznalo.megKuzd(lista[valasztott-1]);
-            }
-            else if (dontes.Equals("b"))
-            {
-                felhasznalo.Gyogyul();
+                if (dontes.Equals("a"))
+                {
+                    Console.WriteLine("Kivel szeretne harcolni?");
+                    int valasztott = int.Parse(Console.ReadLine());
+                    felhasznalo.megKuzd(lista[valasztott - 1]);
+                    if (felhasznalo.Eletero <= 0)
+                    {
+
+                        Console.WriteLine("Meghaltál");
+                    }
+                    else
+                    {
+                         Console.WriteLine("Győztél");
+                    }
+                }
+                else if (dontes.Equals("b"))
+                {
+                    felhasznalo.Gyogyul();
+                }
             }
         }
 
