@@ -34,7 +34,6 @@ namespace HarcosProjekt
         public int SzintLepeshez{ get => 10+szint*5; }
         public int MaxEletero{ get => alapEletero+szint*3;  }
 
-        public void Gyogyul() { }
         public void Megkuzd(Harcos egy,Harcos ketto) 
         {
             if (egy == ketto) { Console.WriteLine("Hiba, kétszer adta meg ugyanazt a harcost");}
@@ -64,16 +63,30 @@ namespace HarcosProjekt
                     {
                         ketto.tapasztalat = ketto.Tapasztalat + 15;
                     }
-                } while (egy.Eletero != 0 && ketto.Eletero != 0);
-
-    {
-
-                }
-                
+                } while (egy.Eletero != 0 && ketto.Eletero != 0);       
             }
-        
-        
-        
+        }
+
+        public void Gyogyul(Harcos egy, Harcos ketto) 
+        {
+            if (egy.Eletero == 0)
+            {
+                egy.Eletero = MaxEletero;
+            }
+            else
+            {
+                egy.Eletero = egy.Eletero+(3+szint);
+            }
+            if (ketto.Eletero == 0)
+            {
+                ketto.Eletero = MaxEletero;
+            }
+            else
+            {
+                ketto.Eletero = ketto.Eletero + (3 + szint);
+            }
+
+
         }
         public override string ToString()
         {
