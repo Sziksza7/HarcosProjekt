@@ -93,5 +93,7 @@ namespace HarcosProjekt
         {
             return String.Format(Nev + "LVL:" + Szint + " EXP:" + Tapasztalat + " HP:" + Eletero + " DMG:" + Sebzes);
         }
+
+        
     }
 }
