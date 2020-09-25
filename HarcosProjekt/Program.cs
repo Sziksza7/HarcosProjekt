@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Collections.Generic;
 
 namespace HarcosProjekt
 {
@@ -6,7 +8,15 @@ namespace HarcosProjekt
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            StreamReader sr = new StreamReader("Harcosok.csv");
+            List<Harcos> lista = new List<Harcos>();
+            while (!sr.EndOfStream)
+            {
+                string sor = sr.ReadLine();
+                string[] splitsor = sor.Split(";");
+                Harcos j = new Harcos(splitsor[0], int.Parse(splitsor[1]));
+                lista.Add(j);
+            }
         }
     }
 }
