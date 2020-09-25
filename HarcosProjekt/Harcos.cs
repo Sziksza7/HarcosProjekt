@@ -35,7 +35,46 @@ namespace HarcosProjekt
         public int MaxEletero{ get => alapEletero+szint*3;  }
 
         public void Gyogyul() { }
-        public void Megkuzd() { }
+        public void Megkuzd(Harcos egy,Harcos ketto) 
+        {
+            if (egy == ketto) { Console.WriteLine("Hiba, kétszer adta meg ugyanazt a harcost");}
+            else if (egy.Eletero==0 && ketto.Eletero==0)
+            {
+                Console.WriteLine("Az egyeik harcos halott");
+            }
+            else
+            {
+                do
+                {
+                    ketto.Eletero = ketto.Eletero - egy.Sebzes;
+                    if (ketto.Eletero != 0)
+                    {
+                        egy.Eletero = egy.Eletero - ketto.Sebzes;
+                        ketto.Tapasztalat = ketto.Tapasztalat + 5;
+                    }
+                    else if(ketto.Eletero ==0 ) 
+                    {
+                        egy.tapasztalat = egy.Tapasztalat + 15;
+                    }
+                    if (egy.Eletero != 0)
+                    {
+                        egy.Tapasztalat = egy.Tapasztalat + 5;
+                    }
+                    else if (egy.Eletero == 0)
+                    {
+                        ketto.tapasztalat = ketto.Tapasztalat + 15;
+                    }
+                } while (egy.Eletero != 0 && ketto.Eletero != 0);
+
+    {
+
+                }
+                
+            }
+        
+        
+        
+        }
         public override string ToString()
         {
             return String.Format(Nev + "LVL:" + Szint + " EXP:" + Tapasztalat + " HP:" + Eletero + " DMG:" + Sebzes);
