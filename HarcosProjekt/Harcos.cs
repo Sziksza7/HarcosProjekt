@@ -19,9 +19,9 @@ namespace HarcosProjekt
             this.Szint = 1;
             this.Tapasztalat = 0;
             this.Eletero = MaxEletero;
-            if (statuszSablon == 1) { this.AlapEletero = 15; this.AlapSebzes = 3; }
-            else if (statuszSablon == 2) { this.AlapEletero = 12; this.AlapSebzes = 4; }
-            else if (statuszSablon == 3) { this.AlapEletero = 8; this.AlapSebzes = 5; }
+            if (statuszSablon == 1) { this.alapEletero = 15; this.alapSebzes = 3; }
+            else if (statuszSablon == 2) { this.alapEletero = 12; this.alapSebzes = 4; }
+            else if (statuszSablon == 3) { this.alapEletero = 8; this.alapSebzes = 5; }
         }
 
         public string Nev { get => nev; set => nev = value; }
