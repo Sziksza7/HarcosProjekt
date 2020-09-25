@@ -40,9 +40,10 @@ namespace HarcosProjekt
             Console.WriteLine("a.) Megküzdeni egy harcossal");
             Console.WriteLine("b.) Gyógyulni");
             Console.WriteLine("c.) Kilépni");
-            string dontes = Console.ReadLine();
+            string dontes = "";
             while (!dontes.Equals("c"))
             {
+                dontes = Console.ReadLine();
                 if (dontes.Equals("a"))
                 {
                     Console.WriteLine("Kivel szeretne harcolni?");
@@ -50,18 +51,25 @@ namespace HarcosProjekt
                     felhasznalo.megKuzd(lista[valasztott - 1]);
                     if (felhasznalo.Eletero <= 0)
                     {
-
                         Console.WriteLine("Meghaltál");
+                        dontes = "c";
                     }
                     else
                     {
-                         Console.WriteLine("Győztél");
+                        Console.WriteLine("Győztél");
                     }
                 }
                 else if (dontes.Equals("b"))
                 {
                     felhasznalo.Gyogyul();
                 }
+                else if (dontes.Equals("c"))
+                { Environment.Exit(0); }
+                Console.WriteLine("Az ön harcosainak adatai: " + felhasznalo);
+                Console.WriteLine("Mit szeretne tenni?");
+                Console.WriteLine("a.) Megküzdeni egy harcossal");
+                Console.WriteLine("b.) Gyógyulni");
+                Console.WriteLine("c.) Kilépni");
             }
         }
 
