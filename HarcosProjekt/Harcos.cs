@@ -18,7 +18,6 @@ namespace HarcosProjekt
             this.Nev = nev;
             this.Szint = 1;
             this.Tapasztalat = 0;
-
             if (statuszSablon == 1) { this.alapEletero = 15; this.alapSebzes = 3; }
             else if (statuszSablon == 2) { this.alapEletero = 12; this.alapSebzes = 4; }
             else if (statuszSablon == 3) { this.alapEletero = 8; this.alapSebzes = 5; }
@@ -35,7 +34,7 @@ namespace HarcosProjekt
         public int SzintLepeshez{ get => 10+szint*5; }
         public int MaxEletero{ get => alapEletero+(szint*3);  }
 
-        public void Megkuzd(Harcos egy,Harcos ketto) 
+        public static void Megkuzd(Harcos egy,Harcos ketto) 
         {
             if (egy == ketto) { Console.WriteLine("Hiba, kétszer adta meg ugyanazt a harcost");}
             else if (egy.Eletero==0 && ketto.Eletero==0)
@@ -68,24 +67,17 @@ namespace HarcosProjekt
             }
         }
 
-        public void Gyogyul(Harcos egy, Harcos ketto) 
+        public void Gyogyul() 
         {
-            if (egy.Eletero == 0)
+            if (this.Eletero == 0)
             {
-                egy.Eletero = MaxEletero;
+                this.Eletero = MaxEletero;
             }
             else
             {
-                egy.Eletero = egy.Eletero+(3+szint);
+                this.Eletero = this.Eletero+(3+szint);
             }
-            if (ketto.Eletero == 0)
-            {
-                ketto.Eletero = MaxEletero;
-            }
-            else
-            {
-                ketto.Eletero = ketto.Eletero + (3 + szint);
-            }
+           
 
 
         }
